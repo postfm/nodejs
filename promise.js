@@ -13,11 +13,24 @@
 
 // promise.catch(console.log)
 
-function delay(ms) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(() => resolve(), ms)
+// function delay(ms) {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(() => resolve(), ms)
+//   })
+// }
+
+// delay(3000).then(() => console.log('выполнилось через 3 секунды'));
+
+const doSomthingAsinc = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve('I did somthing'), 3000)
   })
 }
 
-delay(3000).then(() => console.log('выполнилось через 3 секунды'));
+const doSomthing = async () => {
+  console.log(await doSomthingAsinc())
+}
 
+console.log('Before')
+doSomthing()
+console.log('After')
